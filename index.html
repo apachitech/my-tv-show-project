@@ -9,13 +9,28 @@
   </head>
 
   <body>
-    <div id="root">
-    </div>
-
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
-
-    <!-- Loads YOUR javascript code -->
+    <header>
+      <!-- New dropdown for selecting TV shows -->
+      <select id="show-selector">
+        <option value="">Select a show</option>
+      </select>
+  
+      <!-- Existing episode dropdown -->
+      <select id="episode-selector">
+        <option value="">Select an episode</option>
+      </select>
+  
+      <!-- Search input for episodes -->
+      <input id="search-input" type="text" placeholder="Search episodes...">
+  
+      <!-- Displaying episode count -->
+      <span id="display-count"></span>
+    </header>
+    
+    <!-- Main content for displaying episodes -->
+    <div id="root"></div>
+  
+    <!-- JS Scripts -->
     <script src="script.js"></script>
   </body>
 </html>
