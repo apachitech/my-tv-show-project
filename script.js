@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let allShows = [];
   let allEpisodes = [];
-  let isEpisodeView = false; // New flag to track the current mode
+  let isEpisodeView = false; // Flag to track the current view
 
   // Fetch and display all shows
   function fetchShows() {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayShows(shows) {
-    isEpisodeView = false; // Set mode to "shows"
+    isEpisodeView = false; // Switch to show view
     root.innerHTML = "";
     displayCount.textContent = `Found ${shows.length} show(s)`;
 
@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       showCard.addEventListener("click", () => fetchEpisodes(show.id));
-
       root.appendChild(showCard);
     });
   }
@@ -57,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayEpisodes(episodes) {
-    isEpisodeView = true; // Set mode to "episodes"
+    isEpisodeView = true; // Switch to episode view
     root.innerHTML = "";
     displayCount.textContent = `Displaying ${episodes.length} episode(s)`;
     backToShowsLink.style.display = "block";
