@@ -1,7 +1,3 @@
-#root {
-  color: black;
-}
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -12,9 +8,20 @@ body {
 
 header {
   text-align: center;
-  padding: 1rem 0;
+  padding: 1rem;
   background-color: #222;
   color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header input,
+header select {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
 footer {
@@ -32,7 +39,11 @@ footer {
   padding: 1rem;
 }
 
+.show-card,
 .episode-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -40,23 +51,35 @@ footer {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.show-card img,
 .episode-card img {
-  width: 100%;
+  width: 150px;
   height: auto;
+  object-fit: cover;
 }
 
+.show-info,
 .episode-info {
   padding: 1rem;
+  flex: 1;
 }
 
-.episode-info h2 {
+.show-info h3,
+.episode-info h3 {
   font-size: 1.2rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem;
 }
 
+.show-info p,
 .episode-info p {
   font-size: 0.9rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0.5rem 0;
+}
+
+.show-info .details,
+.episode-info .details {
+  font-size: 0.85rem;
+  color: #555;
 }
 
 .episode-info a {
@@ -68,4 +91,22 @@ footer {
 
 .episode-info a:hover {
   text-decoration: underline;
+}
+
+.back-link {
+  display: block;
+  margin: 1rem;
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+#display-count {
+  font-size: 1rem;
+  margin-left: auto;
+  margin-right: 1rem;
 }
