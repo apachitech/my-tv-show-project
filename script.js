@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let allShows = [];
   let allEpisodes = [];
+  let isEpisodeView = false; // New flag to track the current mode
 
   // Fetch and display all shows
   function fetchShows() {
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayShows(shows) {
+    isEpisodeView = false; // Set mode to "shows"
     root.innerHTML = "";
     displayCount.textContent = `Found ${shows.length} show(s)`;
 
@@ -55,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayEpisodes(episodes) {
+    isEpisodeView = true; // Set mode to "episodes"
     root.innerHTML = "";
     displayCount.textContent = `Displaying ${episodes.length} episode(s)`;
     backToShowsLink.style.display = "block";
@@ -77,14 +80,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   searchShowsInput.addEventListener("input", (event) => {
     const searchTerm = event.target.value.toLowerCase();
-    const filteredShows = allShows.filter(
-      (show) =>
-        show.name.toLowerCase().includes(searchTerm) ||
-        show.summary?.toLowerCase().includes(searchTerm) ||
-        show.genres.some((genre) => genre.toLowerCase().includes(searchTerm))
-    );
 
-    displayShows(filteredShows);
+    if (isEpisodeView) {
+      // Filter episodes
+      const filteredEpisodes = allEpisodes.filter(
+        (episode) =>
+          episode.name.toLowerCase().includes(searchTerm) ||
+          episode.summary?.toLowerCase().includes(searchTerm)
+      );
+      displayEpisodes(filteredEpisodes);
+    } else {
+      // Filter shows
+      const filteredShows = allShows.filter(
+        (show) =>
+          show.name.toLowerCase().includes(searchTerm) ||
+          show.summary?.toLowerCase().includes(searchTerm) ||
+          show.genres.some((genre) => genre.toLowerCase().includes(searchTerm))
+      );
+      displayShows(filteredShows);
+    }
   });
 
   backToShowsLink.addEventListener("click", (event) => {
